@@ -188,8 +188,14 @@ def call(name: str, args: dict):
             return _err(f"unavailable: {o}")
         eds = o.get("editions") or []
         days = [e.get("date") if isinstance(e, dict) else e for e in eds]
+        # 2026-10-14（第 23 轮）：补上付费入口。
+        # 逐面审计发现：5 个工具里只有 `archive_days` 的输出**没有**任何付费入口 ——
+        # 其余四个都有 `MORE`，`initialize.instructions` 也明确写着 "is a paid feed"。
+        # 一个工具漏掉，就等于"调用这个工具的人永远不知道还有付费层"，
+        # 而这种不一致没有任何告警，只能靠逐个跑一遍才发现。
         return _text(f"Archived free editions ({o.get('count')}): " + ", ".join(map(str, days[-40:]))
-                     + "\n\nDigest archive: https://data.jiangzhang.ca/signals4/archive/")
+                     + f"\n\nDigest archive: https://data.jiangzhang.ca/signals4/archive/"
+                     + f"\nMore sources / 4x daily / full history: {MORE}")
     return _err(f"Unknown tool: {name}")
 
 
