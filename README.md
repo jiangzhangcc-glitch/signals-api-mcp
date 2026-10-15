@@ -19,6 +19,28 @@ Every ranked row carries a `citation` string, so an agent can cite the number in
 Entities whose number cannot be derived are published as `unranked` **with the reason** — we would
 rather return "not ranked" than a made-up value.
 
+## Use it without installing anything (hosted endpoint)
+
+There is also a **hosted** MCP endpoint, so no download and no local Python is needed — point any MCP
+client that speaks streamable HTTP at:
+
+```
+https://data.jiangzhang.ca/signals4/mcp
+```
+
+It is published in the official MCP Registry as `ca.jiangzhang.api/signals-api-mcp` and serves the
+same five tools as the single-file version. A quick check with curl:
+
+```bash
+curl -s -X POST https://data.jiangzhang.ca/signals4/mcp \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json, text/event-stream' \
+  -A 'my-agent/1.0' \
+  --data '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+```
+
+(The `User-Agent` header matters here too — see the CDN note further down.)
+
 ## Install
 
 1. Download [`mcp_server.py`](mcp_server.py) anywhere (e.g. `~/mcp/signals/mcp_server.py`).
