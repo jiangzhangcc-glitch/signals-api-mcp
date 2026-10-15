@@ -91,7 +91,7 @@ Attributed landing page (no plan chosen yet):
 ### Pay once instead of subscribing
 
 There is also a one-time option (no subscription, no renewal):
-https://buy.stripe.com/00w28r4W08qq8CcecHgw008
+**the compiled dataset bundle (single JSONL, indexed SQLite, tidy daily entity CSV), refreshed daily** — https://buy.stripe.com/00w28r4W08qq8CcecHgw008
 
 The free endpoints stay free — this repo will not start requiring a key.
 
