@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.jiangzhangcc-glitch/signals-api-mcp",
+  "title": "AI Signals (Signals API)",
+  "description": "Daily AI signals as data for agents: today's four signals from GitHub, Hugging Face, arXiv and industry news, what changed since the previous edition, and ranked AI models and repositories. Every row links to its original source; numbers that cannot be derived are reported as unranked with the reason instead of being invented. Free tier, no API key.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/jiangzhangcc-glitch/signals-api-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://data.jiangzhang.ca/signals4/mcp"
+    }
+  ]
+}
